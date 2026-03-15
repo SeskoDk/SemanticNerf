@@ -68,6 +68,17 @@ Example (Windows):
 
 ------------------------------------------------------------------------
 
+## Data 
+
+The RGB images used for reconstruction must be placed in the following directory structure:
+data/
+└── raw/
+    └── <scene_name>/
+        ├── image_0001.jpg
+        ├── image_0002.jpg
+        ├── image_0003.jpg
+        └── ...
+
 ## 3D Segmentation Pipeline
 
 Replace `<scene_name>` with your dataset configuration.
