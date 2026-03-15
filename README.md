@@ -71,6 +71,9 @@ Example (Windows):
 ## Data 
 
 The RGB images used for reconstruction must be placed in the following directory structure:
+
+The RGB images must be stored in the following structure:
+```
 data/
 └── raw/
     └── <scene_name>/
@@ -78,6 +81,7 @@ data/
         ├── image_0002.jpg
         ├── image_0003.jpg
         └── ...
+```
 
 ## 3D Segmentation Pipeline
 
