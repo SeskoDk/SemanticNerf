@@ -1,0 +1,46 @@
+scene:
+  name: "wheat_716024"
+
+paths:
+  data: "./data/raw/${scene.name}"
+  colmap: "./data/colmap/${scene.name}"
+  colmap_text: "${paths.colmap}/text"
+  root: "./results/${scene.name}"
+  checkpoints: "${paths.root}/checkpoints"
+  volume: "${paths.root}/volume"
+  novel_views: "${paths.root}/novel_views"
+  segmentation_mask: "${paths.root}/segmentation_mask"
+  image_dir: "${paths.data}/images"
+
+files:
+  bbx_results: "${paths.root}/yolo_bbx.json"
+  transforms_json: "${paths.root}/transforms_${scene.name}.json"
+  rays: "${paths.root}/rays_${scene.name}.npz"
+  checkpoint: "${paths.checkpoints}/nerf_final.pth"
+  volume: "${paths.volume}/volume.npz"
+  masked_volme: "${paths.volume}/volume_masked.npz"
+
+data:
+  volume_resolution: 512
+  downsample_factor: 8
+  bbx_confidence_threshold: 0.0
+  sigma_threshold_percentile: 95
+
+train:
+  batch_size: 6144 # 1024 * 6
+  num_epochs: 1
+  lr: 5.0e-4
+  lambda_sem: 0.05
+  chunk_size: 6144
+  N_samples: 64
+  N_importance: 128
+  white_bg: true
+
+eval:
+  n_imgs: 15
+
+model:
+  use_semantics: true  
+  variant: "large"
+  sam_model: "sam2.1_l.pt"
+
